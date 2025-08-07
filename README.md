@@ -1,1 +1,3 @@
-# Advanced-Terraform-Techniques
+# Домашнее задание к занятию "`Основы Terraform. Yandex Cloud`" - `Фумелли Петр`
+
+### Задание 1
