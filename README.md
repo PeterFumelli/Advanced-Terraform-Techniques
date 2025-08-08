@@ -6,10 +6,10 @@
 
   * Ответ:
 
-![alt text](https://github.com/PeterFumelli/terraform-intro/blob/master/img/analytics-vm.png)
-![alt text](https://github.com/PeterFumelli/terraform-intro/blob/master/img/module.marketing_vm.png)
-![alt text](https://github.com/PeterFumelli/terraform-intro/blob/master/img/module.marketing_vm.png)
-![alt text](https://github.com/PeterFumelli/terraform-intro/blob/master/img/nginx-t.png)
+![alt text](https://github.com/PeterFumelli/Advanced-Terraform-Techniques/blob/main/img/analytics-vm.png)
+![alt text](https://github.com/PeterFumelli/Advanced-Terraform-Techniques/blob/main/img/marketing-vm.png)
+![alt text](https://github.com/PeterFumelli/Advanced-Terraform-Techniques/blob/main/img/module.marketing_vm.png)
+![alt text](https://github.com/PeterFumelli/Advanced-Terraform-Techniques/blob/main/img/nginx-t.png)
 
 * Найдите в state-файле секретное содержимое созданного ресурса random_password, пришлите в качестве ответа конкретный ключ и его значение
 
