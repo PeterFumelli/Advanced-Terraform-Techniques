@@ -1,24 +1,28 @@
 resource "yandex_compute_instance" "vm" {
   name        = var.vm_name
-  platform_id = "standard-v1"
-  zone        = "ru-central1-a"
+  platform_id = var.platform_id
+  zone        = null
 
   resources {
-    cores         = 2
-    memory        = 2
-    core_fraction = 20
+    cores         = var.cores
+    memory        = var.memory
+    core_fraction = var.core_fraction
+  }
+
+  scheduling_policy {
+    preemptible = var.preemptible
   }
 
   boot_disk {
     initialize_params {
-      image_id = "fd8e4gcflhhc7odvbuss"
-      size     = 10
+      image_id = var.image_id
+      size     = var.disk_size
     }
   }
 
   network_interface {
-    subnet_id = "e2lkt1lfs7c45oih7au2"
-    nat       = true
+    subnet_id = var.subnet_id
+    nat       = var.nat
   }
 
   metadata = {
@@ -26,4 +30,12 @@ resource "yandex_compute_instance" "vm" {
   }
 
   labels = var.labels
+}
+
+terraform {
+  required_providers {
+    yandex = {
+      source = "yandex-cloud/yandex"
+    }
+  }
 }

@@ -1,25 +1,69 @@
-# variables.tf (корень проекта)
-variable "yc_token" {
-  description = "Yandex.Cloud IAM Token"
+variable "token" {
+  description = "Yandex.Cloud IAM token"
   type        = string
 }
 
-variable "yc_cloud_id" {
-  description = "Yandex.Cloud Cloud ID"
+variable "cloud_id" {
+  description = "Cloud ID"
   type        = string
 }
 
-variable "yc_folder_id" {
-  description = "Yandex.Cloud Folder ID"
+variable "folder_id" {
+  description = "Folder ID"
   type        = string
 }
 
-variable "yc_zone" {
-  description = "Yandex.Cloud Zone"
+variable "default_zone" {
+  description = "Zone (e.g. ru-central1-a)"
   type        = string
 }
 
 variable "ssh_public_key" {
-  description = "Public SSH key to inject into VM"
+  description = "Public SSH key for cloud-init"
+  type        = string
+}
+
+variable "platform_id" {
+  type    = string
+  default = "standard-v3"
+}
+
+variable "cores" {
+  type    = number
+  default = 2
+}
+
+variable "memory" {
+  type    = number
+  default = 2
+}
+
+variable "core_fraction" {
+  type    = number
+  default = 20
+}
+
+variable "disk_size" {
+  type    = number
+  default = 10
+}
+
+variable "preemptible" {
+  type    = bool
+  default = true
+}
+
+variable "nat" {
+  type    = bool
+  default = true
+}
+
+variable "subnet_id" {
+  description = "e9bh8irb5avpo7auq9fg"
+  type        = string
+}
+
+variable "image_id" {
+  description = "fd8e4gcflhhc7odvbuss"
   type        = string
 }

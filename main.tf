@@ -1,33 +1,48 @@
-terraform {
-  required_providers {
-    yandex = {
-      source  = "yandex-cloud/yandex"
-      version = "~> 1.12.0"
-    }
-  }
-}
-
-provider "yandex" {
-  token     = var.token
-  cloud_id  = var.cloud_id
-  folder_id = var.folder_id
-  zone      = var.default_zone
-}
-
 module "marketing_vm" {
-  source     = "./modules/remote-vm"
-  vm_name    = "marketing-vm"
-  labels     = { project = "marketing" }
-  cloud_init = templatefile("${path.module}/cloud-init.yml", {
-    ssh_keys = [var.ssh_public_key]
-  })
+  source    = "./modules/remote-vm"
+  providers = { yandex = yandex }
+
+  vm_name       = "marketing-vm"
+  labels        = { project = "marketing" }
+
+  # compute
+  platform_id   = var.platform_id
+  cores         = var.cores
+  memory        = var.memory
+  core_fraction = var.core_fraction
+  disk_size     = var.disk_size
+  preemptible   = var.preemptible
+
+  # net/disk/meta
+  subnet_id     = var.subnet_id
+  nat           = var.nat
+  image_id      = var.image_id
+
+   cloud_init = templatefile("${path.module}/cloud-init.yml", {
+  ssh_keys = [var.ssh_public_key]
+})
 }
 
 module "analytics_vm" {
-  source     = "./modules/remote-vm"
-  vm_name    = "analytics-vm"
-  labels     = { project = "analytics" }
+  source    = "./modules/remote-vm"
+  providers = { yandex = yandex }
+
+  vm_name       = "analytics-vm"
+  labels        = { project = "analytics" }
+
+  platform_id   = var.platform_id
+  cores         = var.cores
+  memory        = var.memory
+  core_fraction = var.core_fraction
+  disk_size     = var.disk_size
+  preemptible   = var.preemptible
+
+  subnet_id     = var.subnet_id
+  nat           = var.nat
+  image_id      = var.image_id
+
   cloud_init = templatefile("${path.module}/cloud-init.yml", {
-    ssh_keys = [var.ssh_public_key]
-  })
+  ssh_keys = [var.ssh_public_key]
+})
+
 }
