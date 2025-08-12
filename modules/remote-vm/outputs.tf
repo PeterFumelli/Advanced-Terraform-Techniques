@@ -1,7 +1,9 @@
-output "internal_ip" {
-  value = yandex_compute_instance.vm.network_interface[0].ip_address
+output "subnet" {
+  description = "Полный объект созданной подсети"
+  value       = yandex_vpc_subnet.this
 }
 
-output "external_ip" {
-  value = yandex_compute_instance.vm.network_interface[0].nat_ip_address
+output "subnet_id" {
+  description = "ID подсети"
+  value       = yandex_vpc_subnet.this.id
 }
